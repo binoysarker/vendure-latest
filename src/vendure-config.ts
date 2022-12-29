@@ -4,6 +4,7 @@ import {
     DefaultJobQueuePlugin,
     DefaultSearchPlugin,
     VendureConfig,
+    NativeAuthenticationStrategy,
 } from '@vendure/core';
 import { defaultEmailHandlers, EmailPlugin } from '@vendure/email-plugin';
 import { AssetServerPlugin } from '@vendure/asset-server-plugin';
@@ -41,7 +42,13 @@ export const config: VendureConfig = {
         cookieOptions: {
           secret: process.env.COOKIE_SECRET,
         },
-        requireVerification: false
+        requireVerification: false,
+        shopAuthenticationStrategy: [
+            new NativeAuthenticationStrategy()
+        ],
+        adminAuthenticationStrategy: [
+            new NativeAuthenticationStrategy()
+        ]
     },
     dbConnectionOptions: {
         type: 'mysql',
