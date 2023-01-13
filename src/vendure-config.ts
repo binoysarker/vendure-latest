@@ -1,3 +1,4 @@
+import { CheckUniquePhonePlugin } from './plugins/checkUniquePhonePlugin';
 import { RandomCatPlugin } from './plugins/RandomCatPlugin';
 import {
     dummyPaymentHandler,
@@ -11,6 +12,8 @@ import { AssetServerPlugin } from '@vendure/asset-server-plugin';
 import { AdminUiPlugin } from '@vendure/admin-ui-plugin';
 import 'dotenv/config';
 import path from 'path';
+import { CustomerAuthenticationStrategy } from './customerAuthenticationStrategy';
+import { CustomAuthenticationPlugin } from './plugins/CustomAuthenticationPlugin';
 
 const IS_DEV = process.env.APP_ENV === 'dev';
 
@@ -43,12 +46,8 @@ export const config: VendureConfig = {
           secret: process.env.COOKIE_SECRET,
         },
         requireVerification: false,
-        shopAuthenticationStrategy: [
-            new NativeAuthenticationStrategy()
-        ],
-        adminAuthenticationStrategy: [
-            new NativeAuthenticationStrategy()
-        ]
+        
+        
     },
     dbConnectionOptions: {
         type: 'mysql',
@@ -99,6 +98,6 @@ export const config: VendureConfig = {
             route: 'admin',
             port: 3002,
         }),
-        RandomCatPlugin
+        CheckUniquePhonePlugin
     ],
 };
