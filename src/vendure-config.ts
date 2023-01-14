@@ -1,5 +1,4 @@
 import { CheckUniquePhonePlugin } from './plugins/checkUniquePhonePlugin';
-import { RandomCatPlugin } from './plugins/RandomCatPlugin';
 import {
     dummyPaymentHandler,
     DefaultJobQueuePlugin,
@@ -12,8 +11,6 @@ import { AssetServerPlugin } from '@vendure/asset-server-plugin';
 import { AdminUiPlugin } from '@vendure/admin-ui-plugin';
 import 'dotenv/config';
 import path from 'path';
-import { CustomerAuthenticationStrategy } from './customerAuthenticationStrategy';
-import { CustomAuthenticationPlugin } from './plugins/CustomAuthenticationPlugin';
 
 const IS_DEV = process.env.APP_ENV === 'dev';
 
