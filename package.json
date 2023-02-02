@@ -21,6 +21,7 @@
     "@vendure/email-plugin": "1.9.1",
     "dotenv": "16.0.3",
     "mysql": "2.18.1",
+    "request": "^2.88.2",
     "typescript": "4.3.5"
   },
   "devDependencies": {
