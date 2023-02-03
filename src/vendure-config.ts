@@ -1,5 +1,5 @@
+import { CancelOrderPlugin } from './plugins/cancelOrderPlugin';
 import { orderCanceledNotificationProcess } from './customOrderProcess/order-canceled-notification-process';
-import { expressDeliverySelectedNotificationProcess } from "./customOrderProcess/expressDeliverySelected-notification-process";
 import { deliveryNotificationProcess } from "./customOrderProcess/delivery-notification-process";
 import { productDeliveredNotificationProcess } from "./customOrderProcess/product-delivered-notification-process";
 import { CheckUniquePhonePlugin } from "./plugins/checkUniquePhonePlugin";
@@ -101,12 +101,12 @@ export const config: VendureConfig = {
       port: 3002,
     }),
     CheckUniquePhonePlugin,
+    CancelOrderPlugin
   ],
   orderOptions: {
     process: [
       deliveryNotificationProcess,
       productDeliveredNotificationProcess,
-      expressDeliverySelectedNotificationProcess,
       orderCanceledNotificationProcess
     ],
   },
