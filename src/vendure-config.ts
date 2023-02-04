@@ -1,6 +1,5 @@
 import { CancelOrderPlugin } from './plugins/cancelOrderPlugin';
 import { orderCanceledNotificationProcess } from './customOrderProcess/order-canceled-notification-process';
-import { deliveryNotificationProcess } from "./customOrderProcess/delivery-notification-process";
 import { productDeliveredNotificationProcess } from "./customOrderProcess/product-delivered-notification-process";
 import { CheckUniquePhonePlugin } from "./plugins/checkUniquePhonePlugin";
 import {
@@ -105,7 +104,6 @@ export const config: VendureConfig = {
   ],
   orderOptions: {
     process: [
-      deliveryNotificationProcess,
       productDeliveredNotificationProcess,
       orderCanceledNotificationProcess
     ],
