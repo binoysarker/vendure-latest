@@ -14,6 +14,8 @@ import { AssetServerPlugin } from "@vendure/asset-server-plugin";
 import { AdminUiPlugin } from "@vendure/admin-ui-plugin";
 import "dotenv/config";
 import path from "path";
+import { CustomEventPlugin } from './plugins/customEventPlugin';
+import { CustomTokenPlugin } from './plugins/customTokenPlugin';
 
 const IS_DEV = process.env.APP_ENV === "dev";
 
@@ -48,6 +50,7 @@ export const config: VendureConfig = {
       secret: process.env.COOKIE_SECRET,
     },
     requireVerification: false,
+
   },
   dbConnectionOptions: {
     type: "mysql",
@@ -100,7 +103,9 @@ export const config: VendureConfig = {
       port: 3002,
     }),
     CheckUniquePhonePlugin,
-    CancelOrderPlugin
+    CancelOrderPlugin,
+    CustomEventPlugin,
+    CustomTokenPlugin
   ],
   orderOptions: {
     process: [

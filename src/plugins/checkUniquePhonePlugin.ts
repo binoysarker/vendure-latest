@@ -1,4 +1,4 @@
-import {Allow, Ctx, CustomerService, PluginCommonModule, RequestContext, VendurePlugin} from "@vendure/core";
+import {Allow, AuthService, Ctx, CustomerService, PluginCommonModule, RequestContext, VendurePlugin} from "@vendure/core";
 import {Resolver, Args,Query} from '@nestjs/graphql';
 import gql from 'graphql-tag';
 
@@ -12,7 +12,7 @@ checkUniquePhone(phone: String!):Boolean!
 @Resolver()
 class CheckUniquePhoneResolver {
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService,private authService: AuthService) {}
 
   @Query()
   async checkUniquePhone(@Ctx() ctx: RequestContext, @Args() args: any): Promise<Boolean> {
@@ -20,6 +20,7 @@ class CheckUniquePhoneResolver {
         take: 2,
         filter: { phoneNumber: { eq: `${args.phone}` } },
       });
+      this.authService.destroyAuthenticatedSession
 
     // make sure only one customer was selected
     if (!customers["totalItems"] || customers["totalItems"] > 1) {

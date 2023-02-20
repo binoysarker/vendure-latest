@@ -1,7 +1,7 @@
 import { Resolver,Query, Mutation,Args } from '@nestjs/graphql';
 import { gql } from 'graphql-tag';
-import { PluginCommonModule, RequestContext,Ctx, OrderService } from '@vendure/core';
-import { VendurePlugin } from '@vendure/core';
+import { PluginCommonModule, RequestContext,Ctx, OrderService, VendurePlugin, AdministratorService } from '@vendure/core';
+
 
 const schemaExtension = gql`
   extend type Mutation {
